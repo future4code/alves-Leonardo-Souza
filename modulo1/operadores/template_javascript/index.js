@@ -1,4 +1,4 @@
-/* 1) Foram definidos valores de verdadeiro e falso para as variaveis bool1 e bool2 e foi atribuido para
+/* 1) Foram definidos valores de VERDADEIRO e FALSO para as variaveis bool1 e bool2 e foi atribuido para
 bool3 valor de !bool2, ou seja, valor contrário a bool2. Sendo bool2 definido como falso, atribui-se a bool3
 o valor de verdadeiro. Em seguida, foi criada uma variavel mutavel chamada resultado e, primeiramente, foi 
 atribuido que o resultado deve ser verdadeiro e falso, sendo assim, o console.log exibirá falso pois somente
