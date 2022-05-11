@@ -35,7 +35,8 @@ console.log ("A diferença de idade de vocês é de", subtracao, "anos")
 
 let perguntaUsuario = prompt ("Digite um numero par")
 let resultado = Number (perguntaUsuario) % 2
-console.log (resultado)
+let numeroParConfirmacao = Number (resultado) === 2 % 2
+console.log ("O numero selecionado é par", numeroParConfirmacao,)
 
 /* Ao colocar o numero par, o resultado sempre será zero pois numeros pares nunca terão resto numa divisão
 pelo numero 2. Por conseguinte, ao colocar qualquer numero impar o resultado sempre será 1 pois haverá sempre
@@ -62,10 +63,11 @@ let resultado2 = Number (primeiroNumero) === Number (segundoNumero) && primeiroN
 console.log("O primeiro numero é igual ao segundo?", resultado2)
 let divisao1 = Number (primeiroNumero) % Number (segundoNumero)
 let divisaoResultado = Number (divisao1) === 2 % 2 || Number (divisao1) !== 2 % 2
-console.log (divisaoResultado)
+console.log ("O primeiro numero é divisivel pelo segundo?", divisaoResultado,)
 let divisao2 = Number (segundoNumero) % Number (primeiroNumero)
 let divisaoResultado2 = Number (divisao2) === 2 % 2 || Number (divisao2) !== 2 % 2 
-console.log(divisaoResultado2)
+console.log("O segundo numero é divisivel pelo primeiro?", divisaoResultado2,)
+
 
 
  
