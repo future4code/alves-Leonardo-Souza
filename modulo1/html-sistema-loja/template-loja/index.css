@@ -1,0 +1,27 @@
+h1{
+    background-color: red;
+    color: yellow;
+    margin-left: 400px;
+    margin-bottom: 20px;
+    margin-right: 500px;
+    padding-left: 30px;
+}
+#paragrafoTitulo{
+    margin-left: 505px;
+    margin-bottom: 30px;
+    color:red;
+}
+
+nav{
+    margin-bottom: 90px;
+    }
+
+main {
+    margin-left: 275px;
+    margin-bottom: 100px;
+    }
+
+div{
+    margin-left: 300px;
+    margin-bottom: 30px;
+}
