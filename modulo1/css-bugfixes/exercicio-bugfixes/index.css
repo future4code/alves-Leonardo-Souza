@@ -138,3 +138,8 @@ td button {
 table td{
     text-align: center;
 }
+
+table td > img {
+    max-width: 50px;
+    max-height: 50px;
+}
