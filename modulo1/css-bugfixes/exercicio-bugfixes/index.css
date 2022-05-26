@@ -149,3 +149,11 @@ table td > img {
     max-height: 20px;
     background-color: white;
 }
+
+.botao-com-imagem:hover{
+    background-color: rgb(255, 255, 0);
+}
+
+.botao-com-imagem:active{
+    color: white;
+}
