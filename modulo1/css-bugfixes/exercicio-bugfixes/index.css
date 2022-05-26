@@ -143,3 +143,9 @@ table td > img {
     max-width: 50px;
     max-height: 50px;
 }
+
+.container-do-search img{
+    max-width: 20px;
+    max-height: 20px;
+    background-color: white;
+}
