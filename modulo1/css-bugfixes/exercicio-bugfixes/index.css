@@ -157,3 +157,10 @@ table td > img {
 .botao-com-imagem:active{
     color: white;
 }
+
+#h2-do-comprar{
+    text-align: center;
+    margin-left: 550px;
+    margin-right: 550px;
+}
+    
