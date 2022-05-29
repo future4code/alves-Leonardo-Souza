@@ -1,5 +1,4 @@
 header{
-    background-color: red;
     color: yellow;
     text-align: center; 
     height: 45px;  
@@ -7,8 +6,8 @@ header{
     font-size: xx-large;    
 }
 body{
-    background-color: red;  
-    background-image: url(./Background-Foto.png);
+      
+    background-image: url(/xqlgfA.jpg);
     margin-top: 10px;
 }
 

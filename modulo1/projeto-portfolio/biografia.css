@@ -1,5 +1,4 @@
 header{
-    background-color: red;
     color: yellow;
     text-align: center; 
     height: 45px;  
@@ -7,8 +6,8 @@ header{
     font-size: xx-large;    
 }
 body{
-    background-color: red;  
-    background-image: url(Background-Foto.png);
+      
+    background-image: url(/xqlgfA.jpg);
     margin-top: 10px;
 }
 
@@ -27,7 +26,7 @@ nav button:hover{
 
 nav{
     text-align: center;
-    margin-bottom: 50px;
+    margin-bottom: 0px;
 }
 
 nav button:active{
@@ -44,17 +43,24 @@ footer{
 }
 
 div img{
-    margin-left: 550px;
+     margin-left: 550px;
+     margin-top: 80px;
 }
 
 div h1{
     text-align: center;
-    background-color: yellow;
-    margin-left: 580px;
-    margin-right: 580px;
+    color: yellow;
+    margin-left: 550px;
+    margin-right: 550px;
 }
 div p{
-    background-color: yellow;
+    color: yellow;
     text-align: center;
-    padding-inline: 50px;
+    display: inline-block;
+    
+    font-size: x-large;    
+}
+div{
+    margin: 5%;
+    margin-top: 10px;
 }

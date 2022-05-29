@@ -1,5 +1,4 @@
 header{
-    background-color: red;
     color: yellow;
     text-align: center; 
     height: 45px;  
@@ -7,8 +6,8 @@ header{
     font-size: xx-large;    
 }
 body{
-    background-color: red;  
-    background-image: url(/home/Background-Foto.png);
+      
+    background-image: url(/xqlgfA.jpg);
     margin-top: 10px;
 }
 
@@ -40,4 +39,24 @@ footer{
     font-size: large;
     margin-left: 310px;
     margin-right: 310px;
+}
+.projetoBlackjack h1{
+    text-align: center;
+    color: yellow;
+    margin-bottom: 20px;
+}
+.fotoProjeto{
+    display: inline;
+    margin-left: 100px; 
+}
+
+.fotoCodigos{
+    max-width: 300px;
+    max-height: 300px;
+    margin-left: 300px;
+}
+.paragrafo{
+    color: yellow;
+    padding: 50px 70px 0 70px;
+    text-align: center;
 }
