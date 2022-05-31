@@ -1,0 +1,33 @@
+header{
+    width: 98vw;
+    height: 5vw;
+    display: flex;
+    background-color: orange;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+main{
+    display: grid;
+    margin-top: 20px;
+    grid-template-rows: 50vh 50vh ;
+    grid-template-columns: 1fr 1fr 1fr 200px;
+    justify-content: space-around;
+}   
+
+.videosEmGrade{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    border: solid 1px black;
+}
+
+.videodaaula{
+    max-width: 100px;
+    max-height: 100px;       
+}
+
+footer{
+    text-align: center;
+    margin-top: 20px;
+}
