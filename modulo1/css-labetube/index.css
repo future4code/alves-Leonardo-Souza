@@ -1,0 +1,53 @@
+header{
+    width: 100vw;
+    height: 5vw;
+    display: flex;
+    background-color: orange;
+    justify-content: space-between;
+    
+}
+main{
+    display: grid;
+    margin-top: 20px;
+    grid-template-rows: 50vh 50vh ;
+    grid-template-columns: 1fr 1fr 1fr 200px;
+    justify-content: space-around;
+}
+
+#buscador{
+    size: 10%;
+}
+
+.videosEmGrade{
+    width: 200px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    border: solid 1px black;
+}
+
+.videodaaula{
+    max-width: 200px;
+    max-height: 200px;       
+}
+
+footer{
+    background-color: orange;
+    text-align: center;
+    margin-top: 20px;
+    font-size: large;
+}
+
+@media screen and (max-width: 395px) {
+    header{     
+       align-items: stretch;       
+    }
+    main{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+}
