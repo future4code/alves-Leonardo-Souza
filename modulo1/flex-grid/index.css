@@ -1,0 +1,79 @@
+header{  
+    background-color: mediumvioletred;
+    display: flex;     
+}
+
+#bolinho{
+    max-width: 20px;
+    max-height: 20px;
+
+}
+
+#cabecalhoHeader{
+    font-size: smaller;
+    margin-right: 1200px;
+    margin-left: 10px;
+}
+
+#botaoHeader{
+    justify-content: end;
+}
+main{
+    display: flex;
+        
+}
+
+.rodape{
+    background-color: mediumvioletred;
+    text-align: center;
+}
+
+.lista{
+    background-color: #f2d0e0;
+    display: block;  
+    width: 30%;    
+}
+.imagemInicial{
+    max-width: 20px;
+    max-height: 20px;
+    margin-right: 50px;
+    margin-left: 20px;
+}
+
+#setinha{
+    max-width: 20px;
+    max-height: 20px;
+    margin-left: 50px;
+}
+.divDosBolos{
+    display: flex;
+    flex-direction: column;
+    
+          
+}
+
+#fotoDoBolo{
+    max-width: 150px;
+    max-height: 150px;
+    margin: 0 50px 0 50px;
+}
+.tituloDosBolos{
+    max-width: 200px;
+    max-height: 100px;
+    text-align: center;
+    font-size: medium;
+    display: inline-block;
+}
+.paragrafoDosBolos{
+    max-width: 200px;
+    max-height: 100px;
+    max-width: 200px;
+    max-height: 100px;
+    font-size: small;
+    text-align: center;
+}
+
+.divQueSepara{
+    display: flex;
+    flex-wrap: wrap;
+}
