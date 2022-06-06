@@ -1,0 +1,80 @@
+header{
+    color: yellow;
+    text-align: center; 
+    height: 45px;  
+    text-transform: uppercase;
+    font-size: xx-large;    
+}
+body{
+      
+    background-image: url(/xqlgfA.jpg);
+    margin-top: 10px;
+}
+nav p{
+text-align: center;
+font-style: italic;
+color: yellow;
+font-size: medium;
+margin: 30px 0px 50px 0px;
+}
+
+nav button:hover{
+    background-color:yellow;
+    color: red;    
+}
+
+nav{
+    text-align: center;
+}
+
+nav button:active{
+    background-color: goldenrod;
+    color: yellow;
+}
+footer{
+    margin-top: 435px;
+    background-color: yellow;
+    text-align: center;
+    font-size: large;
+    margin-left: 310px;
+    margin-right: 310px;
+}
+
+.Solar img{
+    max-width: 300px;
+    max-height: 250px;
+    margin: 50px 550px 0 550px ;
+}
+
+.cabeçalhos{
+    color: yellow;
+    font-style: oblique;
+    font-size: xx-large;
+    margin: 20px 400px 0 400px;
+}
+
+.textos{
+    color: white;
+}
+.Outback img{
+    max-width: 400px;
+    max-height: 350px;
+    margin: 50px 480px 0 480px ;
+}
+.Outback h1{
+    margin: 20px 450px 0 450px;
+}
+
+.Biblioteca img{
+    max-width: 500px;
+    max-height: 450px;
+    margin: 50px 580px 0 580px ;
+}
+.Biblioteca h1{
+    margin: 20px 300px 0 300px
+}
+.textos{
+    color: white;
+    padding: 0 100px 0 100px ;
+    font-size: larger;
+}
