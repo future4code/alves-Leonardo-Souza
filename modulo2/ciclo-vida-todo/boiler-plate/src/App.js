@@ -63,11 +63,8 @@ class App extends React.Component {
     
   }
 
-  selectTarefa = (id) => {
-    const copiaListaNova = this.state.tarefas.map((tarefa) => {
-        
-    })
-  }
+  // selectTarefa = (id) => {
+  //   }
 
   onChangeFilter = (event) => {
     this.setState({filtro: event.target.value})
