@@ -52,23 +52,23 @@ class App extends React.Component {
   storageData = () =>{
     localStorage.setItem("tarefa", JSON.stringify(this.state.tarefas))
 
-  criaTarefa = () => {
-    const novaTarefa = {
-      id: Date.now(),
-      texto: this.state.inputValue,
-      completa: false
-    }
-    const novaLista = [... this.state.tarefas, novaTarefa]
-    this.setState({tarefas: novaLista})
+  // criaTarefa = () => {
+  //   const novaTarefa = {
+  //     id: Date.now(),
+  //     texto: this.state.inputValue,
+  //     completa: false
+  //   }
+  //   const novaLista = [... this.state.tarefas, novaTarefa]
+  //   this.setState({tarefas: novaLista})
     
-  }
+  // }
 
   // selectTarefa = (id) => {
   //   }
 
-  onChangeFilter = (event) => {
-    this.setState({filtro: event.target.value})
-  }
+  // onChangeFilter = (event) => {
+  //   this.setState({filtro: event.target.value})
+  // }
   
   
 }
