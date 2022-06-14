@@ -49,8 +49,8 @@ class App extends React.Component {
     this.setState({inputValue: event.target.value})
   }
   
-  storageData = () =>{
-    localStorage.setItem("tarefa", JSON.stringify(this.state.tarefas))
+  // storageData = () =>{
+  //   localStorage.setItem("tarefa", JSON.stringify(this.state.tarefas))
 
   criaTarefa = () => {
     const novaTarefa = {
@@ -71,7 +71,7 @@ class App extends React.Component {
   }
   
   
-}
+
   render() {
     const listaFiltrada = this.state.tarefas.filter(tarefa => {
       switch (this.state.filtro) {
