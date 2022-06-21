@@ -116,16 +116,5 @@ class App extends React.Component {
       </div>
     )
   }
-<<<<<<< HEAD
-<<<<<<< HEAD
-
 }
-=======
-}
-
->>>>>>> 8e6473b745965d30c2eeaa5976a266a5686f71b6
-=======
-}
-
->>>>>>> 8e6473b745965d30c2eeaa5976a266a5686f71b6
 export default App
