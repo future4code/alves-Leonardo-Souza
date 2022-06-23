@@ -1,6 +1,6 @@
 import React from "react";
 
-export default class PrimeiraTela extends React.Component {
+export default class SegundaTela extends React.Component {
   state = {
     inputUsuario: "",
     inputEmail: "",
