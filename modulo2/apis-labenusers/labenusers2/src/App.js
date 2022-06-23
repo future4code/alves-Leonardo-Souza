@@ -1,35 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
-import React from 'react';
-import telaInicial from './Components/telaInicial';
-import axios from 'axios';
+import React from "react";
+import PrimeiraTela from "./Components/PrimeiraTela";
+import TelaCadastro from "./Components/TelaCadastro";
 
-export default class App extends React.Component{
-  
+export default class App extends React.Component {
   state = {
-    inputUsuario: "",
-    inputEmail: "",
+    telaPrincipal: "",
+    telaSegunda: ""
+  }  
+  
+  componentDidMount = ()=>{
+    this.setState({telaPrincipal: PrimeiraTela})
   }
 
-
-  onChangeUser = (event)=> {
-    this.setState({inputUsuario: event.target.value})
+  componentDidUpdate = => {
+    this.setState({telaPrincipal: telaPrincipal? TelaCadastro:PrimeiraTela})
   }
-
-  onChangeEmail = (event) => {
-    this.setState({inputEmail:event.target.value})
-  }
-
- 
+  
+  // trocarDeTela = () => {
+  //   this.setState({primeiraTela: primeiraTela})
+  // } 
+  
+  
+  
   render() {
-   return (
-    <div>
-      <button>Trocar de Tela</button>
-      <input placeholder='Nome' onChange={this.onChangeUser} value={this.state.inputUsuario}/>
-      <input placeholder='E-Mail' onChange={this.onChangeEmail} value={this.state.inputEmail}/>
-      <button onClick={this.onChangeUser}>Adiciona Usuário</button>
-    </div>
-  )};
+      return <div>
+        <button>Troca de Tela</button>
+        <this.componentDidMount/>
+        </div>
+    }
 }
-
-
