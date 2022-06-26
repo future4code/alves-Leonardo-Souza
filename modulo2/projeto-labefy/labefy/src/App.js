@@ -5,11 +5,48 @@ import { TelaVisualizaPlaylist } from "./Components/TelaVisualizaPlaylist";
 import { TelaAdicionaMusicas } from "./Components/TelaAdicionaMusicas";
 import { TelaInicial } from "./Components/TelaInicial";
 
+const DivPrincipal = styled.header`
+    height: 100vh;
+    width: 100vw;
+    background-color: orange;
+    color: white;
+    display: flex;
+    display: block;
+    position:fixed;
+       
+`
+
+const Titulo1 = styled.h1`
+  background-color: orange;
+  display: flex;
+  justify-content: center
+`
+const SubTitulo = styled.h2`
+  background-color: orange;  
+  display: flex;
+  justify-content: center
+`
+
+const DivDasTelas = styled.main`
+    display: flex;
+    justify-content: center
+`
+
+const Rodape = styled.footer`
+    background-color: orange;
+    color: white;
+    display: flex;
+    justify-content: center;
+    bottom:0;
+    position: absolute;
+    margin-left: 40vw
+`
 
 export default class App extends React.Component{
   state = {
-    telaPrincipal: "criar"
+    telaPrincipal: "principal"
   } 
+  
   
   escolherTela = () => {
     switch (this.state.telaPrincipal){
@@ -55,10 +92,16 @@ export default class App extends React.Component{
   }
   render(){
     return (
-    <div className="App">
-     {this.escolherTela()}
+      <div className="App">          
+      <DivPrincipal>
+      <Titulo1>Labefy</Titulo1>
+            <SubTitulo>Um novo conceito em música!</SubTitulo>   
+        <DivDasTelas>{this.escolherTela()}</DivDasTelas>
+        </DivPrincipal>
+        <Rodape>Labefy 2022. Todos os Direitos Reservados.</Rodape>
+         
     </div>
-  )}
+ )}
 }
 
 

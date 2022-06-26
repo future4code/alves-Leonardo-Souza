@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios"
 
+
 export class TelaCriaPlaylist extends React.Component{
     state = {
         name:""         
@@ -8,7 +9,7 @@ export class TelaCriaPlaylist extends React.Component{
     
     adicionaPlaylist = (event) => {
         this.setState({name: event.target.value})
-        console.log(event.target.value)
+        
     }
 
     salvarPlaylist = () => {
@@ -23,7 +24,7 @@ export class TelaCriaPlaylist extends React.Component{
         })
             .then((resposta)=>{
                 alert("Playlist Cadastrada!")
-                console.log(resposta.data)
+                this.setState({name:""})
             })
             .catch((erro) => {
                 alert("Playlist com nome já escolhido")
@@ -42,7 +43,7 @@ export class TelaCriaPlaylist extends React.Component{
                  onChange={this.adicionaPlaylist}></input>
                 <button onClick={this.salvarPlaylist}>Adicionar</button>
             <div>
-            {/* <button onClick={this.props.acessarCriar}>Criar Playlist</button> */}
+
             <button onClick={this.props.acessarVisualizar}>Visualizar Minhas Playlists</button>
             <button onClick={this.props.acessarAdicionar}>Adicionar Músicas</button>
             <button onClick={this.props.acessarPrincipal}>Voltar para Inicio</button>
