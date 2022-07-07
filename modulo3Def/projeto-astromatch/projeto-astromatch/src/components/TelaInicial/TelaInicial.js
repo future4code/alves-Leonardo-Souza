@@ -3,9 +3,12 @@ import axios from 'axios'
 import styled from 'styled-components'
 
 const DivDaTelaInicial = styled.div`
+    border: 3px solid black;
     display: block; 
-    margin: 0;
-    padding: 0;     
+    width: 100vw;
+    height: 100px;
+    position: absolute;
+    left: 0; 
     text-align: center;
 `
 
@@ -17,13 +20,12 @@ const DivDaTelaInicial = styled.div`
 //     margin-left: 40vw         
 // `
 
-const Informacoes = styled.p`
-    width: 20vw;
-    height: 10vh;      
-    border: solid 2px red;
-    text-align: center;
-    
-    
+const QuadroInformacoes = styled.div`
+    border: 2px solid red;
+`
+
+const InformacoesDoQuadro = styled.div `
+    border: 1px solid blue;
 `
 
 const FotoDoPerfil = styled.img`
@@ -37,34 +39,61 @@ function TelaInicial(props) {
     const [nomeUsuario, setNomeUsuario] = useState ("")
     const [idadeUsuario, setIdadeUsuario] = useState ("")
     const [bioUsuario, setBioUsuario] = useState ("")
+    const [idUsuario, setIdUsuario] = useState("")
+    
 
 
 
     const escolherPerfil = () => {
-        const url = "https://us-central1-missao-newton.cloudfunctions.net/astroMatch/:aluno/person"
+        const url = "https://us-central1-missao-newton.cloudfunctions.net/astroMatch/leonardoCouto/person"
+            
         axios.get(url)
         .then((res) => {
-            console.log(res)
+            if(res.data.profile){
+            console.log(res.data.profile.id)
             setFotoUsuario(res.data.profile.photo)            
             setNomeUsuario(res.data.profile.name)
             setIdadeUsuario(res.data.profile.age)          
             setBioUsuario(res.data.profile.bio)
+            setIdUsuario(res.data.profile.id)
+            } else {
+                alert("Acabaram os perfis!")
+            }
         })
         .catch((err) => {
             alert(err.response)
+            console.log("Entrou no catch")
         })        
     }  
     
+    const darLike = (id) => {
+        const urlDoLike = `https://us-central1-missao-newton.cloudfunctions.net/astroMatch/leonardoCouto/choose-person`
+        const body = {
+            id: "idUsuario",
+	        choice: true
+        }
+        axios.post(urlDoLike, body)            
+        .then((res) => { 
+            console.log("Deu Like")
+            escolherPerfil()
+        })
+        .catch((err) => {
+            alert(err.response.data)
+        })
+    }
+
   return (
     <DivDaTelaInicial>
         <h2>Tela Inicial</h2>
-        <div>
+        <QuadroInformacoes>
         <FotoDoPerfil src={fotoUsuario}/>
-        <Informacoes>{nomeUsuario}</Informacoes>
-        <Informacoes>{idadeUsuario}</Informacoes>
-        <Informacoes>{bioUsuario}</Informacoes>
-        </div>
+        <InformacoesDoQuadro>{nomeUsuario}</InformacoesDoQuadro>
+        <InformacoesDoQuadro>{idadeUsuario}</InformacoesDoQuadro>
+        <InformacoesDoQuadro>{bioUsuario}</InformacoesDoQuadro>
+        </QuadroInformacoes>
         <button onClick={escolherPerfil}>Próximo Perfil</button>
+        <button onClick={darLike}>Like</button>
+        <button onClick={escolherPerfil}>Dislike</button>
     </DivDaTelaInicial>
   )
 }

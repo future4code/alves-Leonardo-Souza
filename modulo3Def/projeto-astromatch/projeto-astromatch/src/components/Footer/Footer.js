@@ -1,14 +1,30 @@
+import axios from 'axios'
 import React from 'react'
 import styled from 'styled-components'
 
 const DivDoFooter = styled.div`
-    /* border: 5px solid black; */
+    border: orange solid 1px;
     display: flex;     
     justify-content: space-between;
-    margin-top: 4vh;
-    
-
+    width: 100vw;
+    height: 100px;
+    position: absolute;
+    bottom: 0;
+    left: 0; 
 `
+
+const limparMatches = () => {
+  const url = `https://us-central1-missao-newton.cloudfunctions.net/astroMatch/leonardoCouto/clear`
+  axios.put(url)
+  .then((res) => {
+    console.log("Limpou Histórico")
+  })
+  .catch((err) => {
+    console.log ("err.response")
+  })
+}
+
+
 const Footer = (props) => {
   return (
     <DivDoFooter>
@@ -16,7 +32,7 @@ const Footer = (props) => {
     <div>
     <h1>Footer do Astromatch</h1>
     </div>
-    <button>Limpar Matches</button>
+    <button onClick={limparMatches}>Limpar Matches</button>
     </DivDoFooter>
   )
 }
