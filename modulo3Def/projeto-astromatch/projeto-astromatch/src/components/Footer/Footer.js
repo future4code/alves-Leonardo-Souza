@@ -3,14 +3,15 @@ import React from 'react'
 import styled from 'styled-components'
 
 const DivDoFooter = styled.div`
-    border: orange solid 1px;
+    /* border: orange solid 1px; */
     display: flex;     
     justify-content: space-between;
     width: 100vw;
-    height: 100px;
+    height: 10vh;
     position: absolute;
     bottom: 0;
     left: 0; 
+    background-color: #FA7A02
 `
 
 const limparMatches = () => {
@@ -30,7 +31,7 @@ const Footer = (props) => {
     <DivDoFooter>
     <p>Desenvolvido por Leonardo Couto</p>
     <div>
-    <h1>Footer do Astromatch</h1>
+    <h4>2022</h4>
     </div>
     <button onClick={limparMatches}>Limpar Matches</button>
     </DivDoFooter>

@@ -4,7 +4,9 @@ import Footer from "./components/Footer/Footer";
 import TelaInicial from "./components/TelaInicial/TelaInicial";
 import styled from "styled-components";
 
-
+const DivDoApp = styled.div`
+  background-color: #FA7A02
+`
 
 
 
@@ -14,11 +16,13 @@ function App() {
 
   return (
     <div className="App">
+      <DivDoApp>
       <Header telaEscolhida={telaEscolhida} setTelaEscolhida={setTelaEscolhida}/>
       <div>
       <div>{telaEscolhida}</div>
       </div>   
-      <Footer/>   
+      <Footer/>  
+      </DivDoApp> 
     </div>
   );
 }
