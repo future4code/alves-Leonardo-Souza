@@ -1,17 +1,54 @@
-import React from 'react'
-import {useNavigate} from 'react-router-dom'
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import ApplicationFormPage from './ApplicationFormPage'
+import styled from 'styled-components'
+
+const TripsDiv = styled.div`
+  border: solid 2px green;
+  height: 40%;
+  margin-left: 30vw;
+`
 
 function ListTripsPage() {
   const navigate = useNavigate()
 
-  const acessApply = () => {
-    navigate ("/application")
+  const [data, setData] = useState("")
+  const trips = data?.trips 
+
+  useEffect(() => {
+    const url = "https://us-central1-labenu-apis.cloudfunctions.net/labeX/leonardoCouto/trips"
+    axios.get(url)
+      .then((res) => {
+        setData(res.data)
+
+      })
+      .catch((err) => {
+        alert(err.response)
+      })
+  }, [])
+
+  const acessApply = (id) => {
+    navigate(`/application/${id}`)
   }
+  
+  const listOfTrips = trips?.map((element) => {
+    return <TripsDiv key={element.id}>
+      <div>
+        <p>Nome: {element.name}</p>
+        <p>Planeta: {element.planet}</p>
+        <p>Descrição: {element.description}</p>
+        <p>Data de Partida: {element.date}</p>
+        <p>Duração da Viagem: {element.durationInDays}</p>
+        <button onClick={() => acessApply(element.id)}>Aplicar-se a esta viagem</button>
+      </div>
+    </TripsDiv>
+  })
+
   return (
     <div>
       <h2>Viagens Disponíveis</h2>
-      <button onClick={acessApply}>Aplicar-se a esta viagem</button>
+      {listOfTrips}
     </div>
   )
 }
