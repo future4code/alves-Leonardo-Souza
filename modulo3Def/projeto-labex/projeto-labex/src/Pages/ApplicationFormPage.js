@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import { useEffect } from 'react'
 import styled from 'styled-components'
+import { useParams } from 'react-router-dom'
 
 const ApplicationDiv = styled.div`
   border: 2px solid blue;
@@ -21,12 +22,16 @@ const ApplicationInput = styled.input`
 `
 
 
-function ApplicationFormPage(props) {
+function ApplicationFormPage() {
   const [name, setName] = useState("")
   const [age, setAge] = useState("")
   const [appText, setAppText] = useState("")
   const [profession, setProfession] = useState("")
   const [country, setCountry] = useState("")
+
+  const params = useParams()
+  console.log(params)
+
 
   const sendName = (event) => {
     setName(event.target.value)

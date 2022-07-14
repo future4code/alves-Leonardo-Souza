@@ -16,7 +16,6 @@ const RouterDiv = styled.div`
   height: 100vh;
 `
 
-
 function RouterLeonardo() {
   return (
     <RouterDiv>
@@ -27,8 +26,8 @@ function RouterLeonardo() {
           <Route path="create" element={<CreateTripPage />} />
           <Route path="trips" element={<ListTripPage />} />
           <Route path="login" element={<LoginPage />} />
-          <Route path="details" element={<TripDetailsPage />} />
-          <Route path="application" element={<ApplicationFormPage />} />
+          <Route path="details" element={<TripDetailsPage />} /> 
+          <Route path="application/:id" element={<ApplicationFormPage />} />
         </Routes>
       </BrowserRouter>
     </RouterDiv>
