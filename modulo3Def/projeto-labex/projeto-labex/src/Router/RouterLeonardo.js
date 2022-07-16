@@ -26,7 +26,7 @@ function RouterLeonardo() {
           <Route path="create" element={<CreateTripPage />} />
           <Route path="trips" element={<ListTripPage />} />
           <Route path="login" element={<LoginPage />} />
-          <Route path="details" element={<TripDetailsPage />} /> 
+          <Route path="details/:id" element={<TripDetailsPage />} /> 
           <Route path="application/:id" element={<ApplicationFormPage />} />
         </Routes>
       </BrowserRouter>

@@ -4,7 +4,7 @@ import { useEffect } from 'react'
 import styled from 'styled-components'
 import { useParams } from 'react-router-dom'
 
-const ApplicationDiv = styled.div`
+const ApplicationFormDiv = styled.form`
   border: 2px solid blue;
   display: flex;
   display: block;
@@ -12,7 +12,6 @@ const ApplicationDiv = styled.div`
   width: 100%;  
   justify-content: space-between;
 `
-
 const ApplicationInput = styled.input`
   border: 1px solid green;
   display: flex;
@@ -20,75 +19,70 @@ const ApplicationInput = styled.input`
   height: 10%; 
   margin: 10%;
 `
-
-
 function ApplicationFormPage() {
-  const [name, setName] = useState("")
-  const [age, setAge] = useState("")
-  const [appText, setAppText] = useState("")
-  const [profession, setProfession] = useState("")
-  const [country, setCountry] = useState("")
-
+  const [applicationForm, setApplicationForm] = useState({
+    name:"",
+    age:"",
+    applicationText:"",
+    profession:"",
+    country:""    
+  })
+  
   const params = useParams()
-  console.log(params)
 
+  const changeInputs = (event) => {
+    const {name, value} = event.target
+    setApplicationForm({...applicationForm, [name]: value}) 
+  }  
 
-  const sendName = (event) => {
-    setName(event.target.value)
-  }
-  const sendAge = (event) => {
-    setAge(event.target.value)
-  }
-  const sendAppText = (event) => {
-    setAppText(event.target.value)
-  }
-  const sendProfession = (event) => {
-    setProfession(event.target.value)
-  }
-  const sendCountry = (event) => {
-    setCountry(event.target.value)
-  }
-
-
-  const postUserInfo = () => {
-    console.log('Clicou')
-    setName(name)
-    setAge(age)
-    setAppText(appText)
-    setProfession(profession)
-    setCountry(country)
-    alert("Usuário Cadastrado com Sucesso!")
-  }
-
-  useEffect((id) => {
-    const url = `https://us-central1-labenu-apis.cloudfunctions.net/labeX/leonardoCouto/trips/:id/apply`
-    const body = {
-      "name": { name },
-      "age": { age },
-      "applicationText": { appText },
-      "profession": { profession },
-      "country": { country }
-    }
+  const submitCandidate = (event) => {
+    event.preventDefault()    
+    const url = `https://us-central1-labenu-apis.cloudfunctions.net/labeX/leonardoCouto/trips/:id/apply`   
+    const body = applicationForm
     axios.post(url, body)
       .then((res) => {
-        console.log("Cadastro OK")
-        console.log(name)
+        alert("Cadastro OK")        
       })
       .catch((err) => {
-        alert(err.response.message)
+        console.log(err.response)
       })
-  }, [])
+  }
   return (
     <div>
     <h1>Candidate-se Agora!</h1>  
-    <ApplicationDiv>        
-        <ApplicationInput placeholder='Nome' onChange={sendName}></ApplicationInput>
-        <ApplicationInput placeholder='Idade' onChange={sendAge}></ApplicationInput>
-        <ApplicationInput placeholder='Porque deseja ir?' onChange={sendAppText}></ApplicationInput>
-        <ApplicationInput placeholder='Profissão' onChange={sendProfession}></ApplicationInput>
-        <ApplicationInput placeholder='País de Origem' onChange={sendCountry}></ApplicationInput>
-        <button onClick={postUserInfo}>Enviar</button>
-      </ApplicationDiv>
+    <ApplicationFormDiv onSubmit={submitCandidate}>        
+        <ApplicationInput
+           name='name'
+           value={applicationForm.name}
+           placeholder='Nome'
+           onChange={changeInputs}>           
+        </ApplicationInput>
+        <ApplicationInput
+           name='age'
+           value={applicationForm.age}
+           placeholder='Idade'
+           onChange={changeInputs}>           
+        </ApplicationInput>
+        <ApplicationInput
+           name='applicationText'
+           value={applicationForm.applicationText}
+           placeholder='Porque você deseja ir?'
+           onChange={changeInputs}>           
+        </ApplicationInput>
+        <ApplicationInput
+           name='profession'
+           value={applicationForm.profession}
+           placeholder='Profissão'
+           onChange={changeInputs}>           
+        </ApplicationInput>
+        <ApplicationInput
+           name='country'
+           value={applicationForm.country}
+           placeholder='País de Origem'
+           onChange={changeInputs}>           
+        </ApplicationInput>
+        <button>Enviar</button>
+    </ApplicationFormDiv>
     </div>
 
   )
