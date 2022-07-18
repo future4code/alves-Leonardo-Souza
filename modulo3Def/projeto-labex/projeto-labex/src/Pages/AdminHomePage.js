@@ -1,20 +1,19 @@
 import React, { useEffect, useState } from 'react'
-import {useNavigate, useParams} from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
 
 function AdminHomePage() {
   const token = localStorage.getItem('token')
   const navigate = useNavigate()
   const params = useParams()
-
   const [data, setData] = useState("")
-  const trips = data?.trips 
+  const trips = data?.trips
 
   useEffect(() => {
     const token = localStorage.getItem('token')
-      if (token === null){
-        navigate("/login")
-      }
+    if (token === null) {
+      navigate("/login")
+    }
     const url = "https://us-central1-labenu-apis.cloudfunctions.net/labeX/leonardoCouto/trips"
     axios.get(url)
       .then((res) => {
@@ -24,58 +23,49 @@ function AdminHomePage() {
         alert(err.response)
       })
   }, [])
-  
+
   const acessTripDetails = (id) => {
-    navigate (`/details/${id}`)
-    console.log(id)    
+    navigate(`/details/${id}`)
   }
   const acessCreateTrip = () => {
-    navigate ("/create")
+    navigate("/create")
   }
 
-    const deleteTrip = (id) => {
-    console.log("Clicou!")       
-    const url = `https://us-central1-labenu-apis.cloudfunctions.net/labeX/leonardoCouto/trips/${params.id}`
+  const deleteTrip = (id) => {
+    const url = `https://us-central1-labenu-apis.cloudfunctions.net/labeX/leonardoCouto/trips/${id}`
     axios.delete(url, {
-      headers:{
+      headers: {
         auth: token
-      }})
+      }
+    })
       .then((res) => {
-        console.log(id)
-        console.log(res.data)
         alert("Viagem deletada!")
       })
       .catch((err) => {
-        console.log(err.response)
-        alert("Erro!") 
-     })       
+        alert("Erro!")
+      })
   }
-  
+
   const listOfTrips = trips?.map((element) => {
-    return <div key={element.id}>       
+    return <div key={element.id}>
       <div>
         <p>Nome: {element.name}</p>
-        <p>Planeta: {element.planet}</p>
-        <p>Descrição: {element.description}</p>
-        <p>Data de Partida: {element.date}</p>
-        <p>Duração da Viagem: {element.durationInDays}</p>
+
         <button onClick={() => deleteTrip(element.id)}>Deletar Viagem</button>
         <button onClick={() => acessTripDetails(element.id)}>Detalhes da Viagem</button>
-                
-      </div>      
+
+      </div>
     </div>
   })
-  
-  
-  //---------------------------------------- 
+
   return (
     <div>
       <h2>Bem vindo Adm</h2>
       <main>{listOfTrips} </main>
-      <div>    
-      <button onClick={acessCreateTrip}>Criar Nova Viagem</button>
+      <div>
+        <button onClick={acessCreateTrip}>Criar Nova Viagem</button>
       </div>
-      </div>
+    </div>
   )
 }
 

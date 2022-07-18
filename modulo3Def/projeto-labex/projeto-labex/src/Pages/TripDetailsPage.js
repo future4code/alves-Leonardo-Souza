@@ -1,79 +1,53 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
+import { List } from '@chakra-ui/react'
 
-
-function TripDetailsPage() {  
-  const [data, setData] = useState("")  
+function TripDetailsPage() {
+  const [details, setDetails] = useState({})
+  const [candidates, setCandidates] = useState([])
   const params = useParams()
 
-  useEffect((id) => {
+  const tripDetails = () => {
     const token = localStorage.getItem('token')
-    const url = `https://us-central1-labenu-apis.cloudfunctions.net/labeX/leonardoCouto/trip/${params.id}` 
+    const url = `https://us-central1-labenu-apis.cloudfunctions.net/labeX/leonardoCouto/trip/${params.id}`
     axios.get(url, {
       headers: {
         auth: token
       }
     })
       .then((res) => {
-        console.log(res.data.trip)
-        setData(res.data.trip)       
+        setDetails(res.data.trip)
+        setCandidates(res.data.trip.candidates)
       })
       .catch((err) => {
-        console.log(err.response)
+        alert("Página em erro. Tente novamente!")
       })
-  },[])
+  }
+
+  useEffect(() => {
+    tripDetails()
+  }, [])
+
+  const seeCandidates = candidates.map((element) => {
+    return <div key={element.id}>
+      <h2>Aplicações recebidas:</h2>
+      <p>Nome: {element.name}</p>
+      <p>Idade: {element.age}</p>
+      <p>País de Origem: {element.country}</p>
+      <p>Profissão: {element.profession}</p>
+      <p>Motivo da Aplicação: {element.applicationText}</p>
+      <button>Aprovar</button>
+      <button>Rejeitar</button>
+    </div>
+  })
 
   return (
     <div>
-      <h1>Trip Details Page</h1>              
+      <h1>Trip Details Page</h1>      
+      {seeCandidates}
     </div>
   )
 }
-
 export default TripDetailsPage
 
-// ****************************** divisão de codigos ****************
-
-// import React, { useEffect, useState } from "react"
-// import { useNavigate, useParams } from "react-router-dom"
-// import axios from 'axios'
-
-
-// export const TripDetailsPage = () => {
-//   const navigate = useNavigate()
-//   const token = localStorage.getItem('token')
-//   const params = useParams()
-//   const [detalhe, setDetalhe] = useState({})
-//   useEffect(() => {
-//       pegaDetalhesViagens()
-//   }, [])
-//   const pegaDetalhesViagens = () => {
-//       const url = `https://us-central1-labenu-apis.cloudfunctions.net/labeX/olavo-marques-alves/trip/${params.id}`
-//       axios.get(url, {
-//           headers: {
-//               auth: token
-//           }
-//       })
-//           .then((res) => {
-//               // console.log(res.data.trip.approved)
-//               setDetalhe(res.data.trip)
-//           })
-//           .catch((err) => {
-//               // console.log("Deu err", err.response)
-//           })
-//   }
-//   return (
-//       <DivDetalhes>
-//               <h1>Detalhes da viagem</h1>
-//           <section>
-//               <DetalhesViagem>Nome: {detalhe.name}</DetalhesViagem>
-//               <DetalhesViagem>Planeta: {detalhe.planet}</DetalhesViagem>
-//               <DetalhesViagem>Descrição: {detalhe.description}</DetalhesViagem>
-//               <DetalhesViagem>Data: {detalhe.date}</DetalhesViagem>
-//               <DetalhesViagem>Dyuração em dias {detalhe.durationInDays}</DetalhesViagem>
-//           </section>
-//           <button onClick={() => goToAdminHomePage(navigate)} >Voltar</button>
-//       </DivDetalhes>
-//   )
-// }

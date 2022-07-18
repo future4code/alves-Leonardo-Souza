@@ -1,92 +1,82 @@
 import { type } from '@testing-library/user-event/dist/type'
 import axios from 'axios'
-import React, { useEffect } from 'react'
-import useForm from '../Components/useForm'
-
+import React, { useEffect, useState } from 'react'
 
 function CreateTripPage() {
-  
-  const [form, onChange] = useForm({
-      name: "",
-      planet: "",
-      date: "",
-      description: "",
-      durationInDays: ""
+
+  const [form, setForm] = useState({
+    name: "",
+    planet: "",
+    date: "",
+    description: "",
+    durationInDays: ""
   })
 
-  // const createTrip = () => {
-  //   const token = localStorage.getItem('token')
-  //   const url = 'https://us-central1-labenu-apis.cloudfunctions.net/labeX/leonardoCouto/trips'
-  //   const body = form
-  //   axios.post(url, body, { headers: {
-  //     "Content-Type": "application/json",
-  //     auth: token
-  //   }
-  //   .then((res) => {
-  //     console.log(res.data)
-  //   })
-  //   .catch((err) => {
-  //     console.log(err.response)
-  //   })      
-  //   })
-  // }  
-  // useEffect(() => {
-  //   const token = localStorage.getItem('token')
-  //   const url = 'https://us-central1-labenu-apis.cloudfunctions.net/labeX/leonardoCouto/trips'
-  //   const body = {
-  //     name: "",
-  //     planet: "",
-  //     date: "",
-  //     description: "",
-  //     durationInDays: ""
-  //   }
-  //   axios.post(url, body, { headers: {
-  //     "Content-Type": "application/json",
-  //     auth: token
-  //   }
-  //   .then((res) => {
-  //     console.log(res.data)
-  //   })
-  //   .catch((err) => {
-  //     console.log(err.response)
-  //   })      
-  //   })
-  // }, [])  
+  const changeInputs = (event) => {
+    const { name, value } = event.target
+    setForm({ ...form, [name]: value })
+  }
+
+  const createTrip = (event) => {
+    event.preventDefault()
+    const token = localStorage.getItem('token')
+    const url = 'https://us-central1-labenu-apis.cloudfunctions.net/labeX/leonardoCouto/trips'
+    const body = form
+    axios.post(url, body, {
+      headers: {
+        auth: token
+      }
+    })
+      .then((res) => {
+        alert("Viagem cadastrada com sucesso!")
+        setForm({
+          name: "",
+          planet: "",
+          date: "",
+          description: "",
+          durationInDays: ""
+        })
+      })
+      .catch((err) => {
+        alert("Erro na criação! Tente novamente!")
+      })
+  }
 
   return (
     <div>
       <h2>Create Trip Page</h2>
-      <form>
+      <form onSubmit={createTrip}>
         <input
-        name='name'
-        value={form.name}
-        placeholder='Nome'
-        onChange={onChange}>          
+          name='name'
+          value={form.name}
+          placeholder='Nome'
+          onChange={changeInputs}>
         </input>
         <input
-        name='planet'
-        value={form.planet}
-        placeholder='Planeta'
-        onChange={onChange}>          
+          name='planet'
+          value={form.planet}
+          placeholder='Planeta'
+          onChange={changeInputs}>
         </input>
         <input
-        name='date'
-        value={form.date}
-        placeholder='Nome'
-        onChange={onChange}>          
+          name='date'
+          value={form.date}
+          placeholder='Data'
+          onChange={changeInputs}>
         </input>
         <input
-        name='description'
-        value={form.description}
-        placeholder='Nome'
-        onChange={onChange}>          
+          name='description'
+          value={form.description}
+          placeholder='Descrição'
+          onChange={changeInputs}>
         </input>
         <input
-        name='durationInDays'
-        value={form.durationInDays}
-        placeholder='Duração (em dias)'
-        onChange={onChange}>          
+          name='durationInDays'
+          value={form.durationInDays}
+          placeholder='Duração (em dias)'
+          onChange={changeInputs}>
         </input>
+        <button>Criar Viagem</button>
       </form>
     </div>
   )

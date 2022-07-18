@@ -4,18 +4,18 @@ import styled from 'styled-components'
 const HeaderDiv = styled.div`
     display: flex;    
     justify-content: space-around;
-    border: 2px solid black;
-    /* position: absolute; */
+    border: 2px solid #348BAD;
+    color: #AD6C23;
+    font-size:x-large;
     left: 0; 
     top: 0; 
-    width: 99.7vw;
       
 `
 
 function Header() {
   return (
     <HeaderDiv>
-      <h2>Header do Labex</h2>
+      <h2>LabeX</h2>
     </HeaderDiv>
   )
 }

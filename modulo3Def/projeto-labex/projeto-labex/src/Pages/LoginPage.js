@@ -34,12 +34,12 @@ function LoginPage() {
 
   return (
     <div>
-      
+
       <h2>Página de Login</h2>
       <form onSubmit={acessAdminArea}>
-      <input type="email"  placeholder='Login' onChange={sendEmail} required></input>
-      <input type="password" placeholder='Senha' onChange={sendPassword} required></input>
-      <button>Acessar</button>
+        <input type="email" placeholder='Login' onChange={sendEmail} required></input>
+        <input type="password" placeholder='Senha' onChange={sendPassword} required></input>
+        <button>Acessar</button>
       </form>
     </div>
   )

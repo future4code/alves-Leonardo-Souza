@@ -10,10 +10,8 @@ import TripDetailsPage from "../Pages/TripDetailsPage"
 import styled from 'styled-components';
 
 const RouterDiv = styled.div`
-  display: flex;
-  /* border: solid 1px red; */
-  position: relative;  
-  height: 100vh;
+  display: flex; 
+  height: 100vh
 `
 
 function RouterLeonardo() {

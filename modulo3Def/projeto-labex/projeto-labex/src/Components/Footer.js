@@ -3,19 +3,20 @@ import styled from 'styled-components'
 
 const FooterDiv = styled.div`
     display: flex;
-    border: 2px solid black;
+    display: block;
+    text-align: center;    
+    color: #AD6C23;
+    border: 2px solid #348BAD;
     justify-content: space-around;
-    /* position: relative; */
     left: 0; 
     bottom: 0;
-    width: 99.7vw;
-
 `
 
 function Footer() {
   return (
     <FooterDiv>
-      <h2>Footer do Labex</h2>
+      <h2>Labex 2022</h2>
+      <h3>All CopyRigths Reserved</h3>
     </FooterDiv>
   )
 }

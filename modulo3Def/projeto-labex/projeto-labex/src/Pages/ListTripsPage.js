@@ -4,24 +4,34 @@ import { useNavigate } from 'react-router-dom'
 import ApplicationFormPage from './ApplicationFormPage'
 import styled from 'styled-components'
 
-const TripsDiv = styled.div`
-  border: solid 2px green;
-  height: 40%;
-  margin-left: 30vw;
+const PageDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 `
-
+const PageTitle = styled.h2`
+  margin-left: 43vw;
+  color: #FA9170;
+  font-weight: bold;
+`
+const TripsDiv = styled.div`
+  border: solid 2px #348BAD;
+  font-weight: bold;
+  color: #FA9170;
+  height: 50%;
+  margin-left: 35vw;
+  text-align: center;
+`
 function ListTripsPage() {
   const navigate = useNavigate()
-
   const [data, setData] = useState("")
-  const trips = data?.trips 
+  const trips = data?.trips
 
   useEffect(() => {
     const url = "https://us-central1-labenu-apis.cloudfunctions.net/labeX/leonardoCouto/trips"
     axios.get(url)
       .then((res) => {
         setData(res.data)
-
       })
       .catch((err) => {
         alert(err.response)
@@ -31,7 +41,7 @@ function ListTripsPage() {
   const acessApply = (id) => {
     navigate(`/application/${id}`)
   }
-  
+
   const listOfTrips = trips?.map((element) => {
     return <TripsDiv key={element.id}>
       <div>
@@ -46,10 +56,10 @@ function ListTripsPage() {
   })
 
   return (
-    <div>
-      <h2>Viagens Disponíveis</h2>
+    <PageDiv>
+      <PageTitle>Viagens Disponíveis</PageTitle>
       {listOfTrips}
-    </div>
+    </PageDiv>
   )
 }
 
