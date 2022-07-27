@@ -6,17 +6,21 @@ import RecipesListPage from '../pages/RecipesListPage/RecipeList'
 import RecipeDetailsPage from '../pages/RecipeDetailsPage/RecipeDetails'
 import CreateRecipePage from '../pages/CreateRecipePage/CreateRecipe'
 import ErrorPage from '../pages/ErrorPage/Error'
+import Header from '../components/Header/Header';
+
 
 export default function Router() {
   return (
     <BrowserRouter>
-        <Routes>
-            <Route path="/login" element={<LoginPage/>}/>
-            <Route path="/cadastro" element={<SignUpPage/>}/>
-            <Route path="/" element={<RecipesListPage/>}/>
-            <Route path="/criar" element={<CreateRecipePage/>}/>
-            <Route path="/detalhes/:id" element={<RecipeDetailsPage/>}/>                     
-        </Routes>
+      <Header/>
+      <Routes>
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/cadastro" element={<SignUpPage />} />
+        <Route path="/" element={<RecipesListPage />} />
+        <Route path="/criar" element={<CreateRecipePage />} />
+        <Route path="/detalhes/:id" element={<RecipeDetailsPage />} />
+        <Route path="*" element={<ErrorPage />} />
+      </Routes>
     </BrowserRouter>
   )
 }
