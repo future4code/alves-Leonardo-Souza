@@ -1,19 +1,15 @@
-import { Navigate, useNavigate } from "react-router-dom"
-
-const navigate = useNavigate()
-
-const goToLogin = () => {
+export const goToLogin = (navigate) => {
     navigate("/login")
 }
-const goToSignUp = () => {
+export const goToSignUp = (navigate) => {
     navigate("/cadastro")
 }
-const goToRecipesList = () => {
+export const goToRecipesList = (navigate) => {
     navigate("/")
 }
-const goToCreateRecipe = () => {
+export const goToCreateRecipe = (navigate) => {
     navigate("/criar")
 }
-const goToRecipeDetails = (id) => {
+export const goToRecipeDetails = (navigate, id) => {
     navigate(`/detalhes/${id}`)
 }

@@ -1,38 +1,19 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
+import { StyledToolbar } from './styled';
+import {goToRecipesList, goToLogin} from '../../routes/coordinator'
+import { useNavigate } from 'react-router-dom';
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
-  title: {
-    flexGrow: 1,
-  },
-}));
-
-export default function Header() {
-  const classes = useStyles();
-
-  return (
-    
+export default function Header() {  
+  const navigate = useNavigate()
+  return (    
       <AppBar position="static">
-        <Toolbar>
-          
-          <Typography variant="h6">
-            CookeNu
-          </Typography>
-          <Button color="inherit">Login</Button>
-        </Toolbar>
+        <StyledToolbar>          
+          <Button onClick={() => goToRecipesList(navigate)} color="inherit">CookeNu</Button>
+          <Button onClick={() => goToLogin(navigate)} color="inherit">Login</Button>
+        </StyledToolbar>
       </AppBar>
     
-  );
+  )
 }
