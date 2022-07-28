@@ -5,23 +5,36 @@ import TextField from '@material-ui/core/TextField'
 import useForm from '../../hooks/useForm'
 import { Button } from '@material-ui/core'
 import axios from 'axios'
-import {BASE_URL} from '../../constants/urls'
 import { useNavigate } from 'react-router-dom'
+import useUnprotectedPage from '../../hooks/useUnprotectedpage'
+import { goToRecipesList } from '../../routes/coordinator'
 
-
-export default function SignUp() {
+export default function SignUp({setLoginButtonText}) {
+  useUnprotectedPage()
   const [form, onChange, clear] = useForm({name: "", email: "", password: "" })
   const navigate = useNavigate()
-
-  const onSubmitForm = (event) => {
-    event.preventDefault()    
+  
+  const onSubmitSignUp = (event) => {
+    event.preventDefault()  
+    const url = `https://cookenu-api.herokuapp.com/user/signup`
+      axios.post(url, form)
+      .then((res) => {
+        localStorage.setItem('token', res.data.token)
+        alert("Usuário Cadastrado com Sucesso!")
+        clear()
+        goToRecipesList(navigate)
+        setLoginButtonText("Logout")
+      })
+      .catch((err) => {
+        alert(err.response.data.message)
+      })
   }
 
   return (
     <MainDiv>
       <LogoImage src={logo} />
       <InputsDiv>
-        <form onSubmit={onSubmitForm}>
+        <form onSubmit={onSubmitSignUp}>
         <TextField
             name={"name"}
             value={form.name}

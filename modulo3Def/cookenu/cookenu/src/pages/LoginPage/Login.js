@@ -7,16 +7,18 @@ import { Button } from '@material-ui/core'
 import {goToSignUp} from '../../routes/coordinator'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
-import {BASE_URL} from '../../constants/urls'
 import {login} from '../../services/user'
+import useUnprotectedPage from '../../hooks/useUnprotectedpage'
 
-export default function Login() {
+export default function Login({setLoginButtonText}) {
+  useUnprotectedPage()
   const [form, onChange, clear] = useForm({ email: "", password: "" })
   const navigate = useNavigate()
 
+
   const onSubmitForm = (event) => {
     event.preventDefault() 
-    login(form, clear)   
+    login(form, clear, navigate, setLoginButtonText)   
   } 
 
   return (
