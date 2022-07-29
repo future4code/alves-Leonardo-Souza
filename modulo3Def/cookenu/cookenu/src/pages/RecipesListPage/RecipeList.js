@@ -4,7 +4,7 @@ import useRequestData from '../../hooks/useRequestData'
 import CardRecipeList from './CardRecipeList'
 import {RecipeListContainer, AddRecipeButton} from './styled.js'
 import { useNavigate } from 'react-router-dom'
-import {goToCreateRecipe} from '../../routes/coordinator.js'
+import {goToCreateRecipe, goToRecipeDetails} from '../../routes/coordinator.js'
 
 export default function RecipeList() {
   useProtectedPage()
@@ -12,14 +12,20 @@ export default function RecipeList() {
   const recipes = useRequestData([], url)
   const navigate = useNavigate()
 
+  const onClickCard = (id) => {
+    goToRecipeDetails(navigate, id)
+  }
+  
   const recipeCard = recipes.map((element) => {
     return <CardRecipeList
       key={element.recipe_id}
       title={element.title}
       image={element.image}
-      onClick={() => null}
+      onClick={() => onClickCard(element.recipe_id)}
     />
   })
+
+
 
   return (
     <RecipeListContainer>
