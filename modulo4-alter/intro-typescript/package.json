@@ -1,0 +1,21 @@
+{
+  "name": "intro-typescript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "tsc && node ./build/index.js",
+    "start-exe1": "tsc && node ./build/exercicio1/exercicio1.js",    
+    "start-exe2": "tsc && node ./build/exercicio2/exercicio2.js",    
+    "start-exe3": "tsc && node ./build/exercicio3/exercicio3.js",    
+    "start-exe4": "tsc && node ./build/exercicio4/exercicio4.js" ,   
+    "start-exe5": "tsc && node ./build/exercicio5/exercicio5.js"    
+  },
+  "keywords": [],
+  "author": "Leonardo Couto",
+  "license": "ISC",
+  "dependencies": {
+    "typescript": "^4.7.4"
+  }
+}
