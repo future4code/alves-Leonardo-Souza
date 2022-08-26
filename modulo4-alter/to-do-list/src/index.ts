@@ -12,7 +12,7 @@ dotenv.config()
 //     host: "35.226.146.116",
 //     port: 3306,
 //     user: "alves-leonardo-souza",
-//     password: "TLDxrLwzLk9VRgQHMllK",
+//     password: "",
 //     database: "alves-leonardo-souza"
 //   }
 // });
