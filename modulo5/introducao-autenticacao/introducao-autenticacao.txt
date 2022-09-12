@@ -1,0 +1,19 @@
+1) a) O uso de strings pode ser mais apropriado pois permite uma combinação de caracteres,
+letras e números e assim se manter único.
+
+2) a) O código cria um usuário e o insere as informações do usuário na tabela do MySQL
+através de uma requisição utilizando knex query builder
+
+b) CREATE TABLE autenticacao_User(
+	id VARCHAR (255) PRIMARY KEY,
+    email VARCHAR (255),
+    password VARCHAR (255)
+)
+
+3) a) A sintaxe "as string" serve para definir que a saída de uma varíavel ou função será
+uma string independente da forma que a mesma chegar.
+
+
+
+
+
