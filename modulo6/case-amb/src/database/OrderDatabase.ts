@@ -1,32 +1,47 @@
+import { IOrderDB, IOrderItemDB, Order } from "../models/Order"
 import { BaseDatabase } from "./BaseDatabase"
+import { PizzaDatabase } from "./PizzaDatabase"
 
 export class OrderDatabase extends BaseDatabase {
      public static TABLE_ORDERS = "Amb_Orders"
      public static TABLE_ORDER_ITEM = "Amb_Order_Item"
+  
+        public createOrder = async (orderId: string): Promise<void> => {
+        await BaseDatabase
+            .connection(OrderDatabase.TABLE_ORDERS)
+            .insert({
+                id: orderId
+            })
+    }
 
+    public insertItem = async (orderItem: IOrderItemDB): Promise<void> => {
+        await BaseDatabase
+        .connection(OrderDatabase.TABLE_ORDER_ITEM)
+        .insert(orderItem)
+    }
+
+    public getPrice = async (pizzaName: string): Promise <number | undefined> => {
+        const result: number[] = await BaseDatabase
+        .connection(PizzaDatabase.TABLE_PIZZAS)
+        .select("price")
+        .where({ name: pizzaName})
+
+        return result[0]
+    }
+    public getOrders = async (): Promise<IOrderDB[]> => {
+        const result: IOrderDB[] = await BaseDatabase
+            .connection(OrderDatabase.TABLE_ORDERS)
+            .select()
+
+        return result
+    }
+
+    public getOrderItem = async (orderId: string): Promise<IOrderItemDB[]> => {
+        const result: IOrderItemDB[] = await BaseDatabase
+            .connection(OrderDatabase.TABLE_ORDER_ITEM)
+            .select()
+            .where({ order_id: orderId })
+
+        return result
+    }
 }
-
-    // public toPizzaDBModel = (pizza: Pizza): IPizzaDB=> {
-    //     return {
-    //         name: pizza.getName(),
-    //         price: pizza.getPrice()
-    //     }
-    // }
-
-//     public findByEmail = async (email: string): Promise<IUserDB | undefined> => {
-//         const result: IUserDB[] = await BaseDatabase
-//             .connection(UserDatabase.TABLE_USERS)
-//             .select()
-//             .where({ email })
-
-//         return result[0]
-//     }
-
-//     public createUser = async (user: User): Promise<void> => {
-//         const userDB = this.toUserDBModel(user)
-
-//         await BaseDatabase
-//             .connection(UserDatabase.TABLE_USERS)
-//             .insert(userDB)
-//     }
-// }
